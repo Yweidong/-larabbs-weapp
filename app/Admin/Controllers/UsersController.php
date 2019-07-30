@@ -10,8 +10,11 @@ use Encore\Admin\Show;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
+use Encore\Admin\Controllers\ModelForm;
+
 class UsersController extends Controller
 {
+     use ModelForm;
     /**
      * Title for current resource.
      *

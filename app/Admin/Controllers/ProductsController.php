@@ -106,7 +106,14 @@ class ProductsController extends Controller
 
             // 创建一个输入框，第一个参数 title 是模型的字段名，第二个参数是该字段描述
             $form->text('title', '商品名称')->rules('required');
-
+            // 添加一个类目字段，与之前类目管理类似，使用 Ajax 的方式来搜索添加
+            // $form->select('category_id', '类目')->options(function () {
+            //     $category = new Category;
+              
+            //         return [$category->id => $category->full_name];
+                
+            // })->ajax('/admin/api/categories');
+            $form->select('category_id', '类目')->options('/admin/api/categories');
             // 创建一个选择图片的框
             $form->image('image', '封面图片')->rules('required|image');
 
@@ -128,6 +135,14 @@ class ProductsController extends Controller
             $form->saving(function (Form $form) {
                 $form->model()->price = collect($form->input('skus'))->where(Form::REMOVE_FLAG_NAME, 0)->min('price') ?: 0;
             });
+        });
+    }
+
+    public function edit($id)
+    {
+        return Admin::content(function (Content $content) use ($id) {
+            $content->header('编辑商品');
+            $content->body($this->form()->edit($id));
         });
     }
 }

@@ -121,7 +121,7 @@ class CategoriesController extends Controller
                 ->rules('required');
 
             // 定义一个名为父类目的下拉框
-            $form->select('parent_id', '父类目')->ajax('/admin/api/categories');
+            $form->select('parent_id', '父类目')->options('/admin/api/categories');
         }
 
         return $form;
@@ -131,17 +131,17 @@ class CategoriesController extends Controller
     public function apiIndex(Request $request)
     {
         // 用户输入的值通过 q 参数获取
-        $search = $request->input('q');
-        $result = Category::query()
-            ->where('is_directory', true)  // 由于这里选择的是父类目，因此需要限定 is_directory 为 true
-            ->where('name', 'like', '%'.$search.'%')
-            ->paginate();
+        // $level = $request->input('q');
+        $result = Category::query()->where('is_directory', true)  // 由于这里选择的是父类目，因此需要限定 is_directory 为 true
+            // ->where('name', 'like', '%'.$search.'%')
+            ->where('level',0)
+            ->get(['id','name as text']);
 
         // 把查询出来的结果重新组装成 Laravel-Admin 需要的格式
-        $result->setCollection($result->getCollection()->map(function (Category $category) {
-            return ['id' => $category->id, 'text' => $category->full_name];
-        }));
-
+        // $result->SetCollection($result->map(function (Category $category) {
+        //     return ['id' => $category->id, 'text' => $category->full_name];
+        // }));
+        // dd($result);
         return $result;
     }
 }

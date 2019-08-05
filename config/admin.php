@@ -395,6 +395,8 @@ return [
     |
     */
     'extensions' => [
-
+        'env-manage'=>[
+            'enable' => true
+        ]
     ],
 ];

@@ -62,6 +62,21 @@ return [
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
         ],
+
+        'qiniu' => [
+            'driver'  => 'qiniu',
+            'domains' => [
+                'default'   => 'static.hamu.site.com', 
+                'https'     => 'static.hamu.site',       
+                'custom'    => 'static.hamu.site.com',              
+             ],
+           
+            'access_key'=> 'boHffaiXRGVAbRBK0UZfBTO8HJu91UTKdxjqfSLK',  //AccessKey
+            'secret_key'=> 'htOamcakyN-VcDI0-P7fAQteuGZfVoMDsSpk3GDv',  //SecretKey
+            'bucket'    => 'static_hamu',  //Bucket
+            'notify_url'=> '',  //
+            // 'url'       => 'https://static.hamu.site',
+        ],
         
 
 

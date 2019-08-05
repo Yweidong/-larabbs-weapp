@@ -25,10 +25,10 @@ return [
 
         //七牛配置,若mode='qiniu',以下为必填.
         'qiniu' => [
-            'accessKey' => '',
-            'secretKey' => '',
-            'bucket' => '',
-            'url' => 'http://xxx.clouddn.com',//七牛分配的CDN域名,注意带上http://
+            'accessKey' => 'boHffaiXRGVAbRBK0UZfBTO8HJu91UTKdxjqfSLK',
+            'secretKey' => 'htOamcakyN-VcDI0-P7fAQteuGZfVoMDsSpk3GDv',
+            'bucket' => 'static_hamu',
+            'url' => 'https://static.hamu.site',//七牛分配的CDN域名,注意带上http://
 
         ],
 

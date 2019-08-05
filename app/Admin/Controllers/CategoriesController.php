@@ -56,7 +56,7 @@ class CategoriesController extends Controller
 
         $grid->column('id', __('Id'))->sortable();
         $grid->column('name', __('名称'));
-        // $grid->column('parent_id', __('Parent id'));
+        
         $grid->is_directory('是否目录')->display(function ($value) {
             return $value ? '是' : '否';
         });
@@ -106,6 +106,7 @@ class CategoriesController extends Controller
         $form->text('name', __('类目名称'))->rules('required');
         // 如果是编辑的情况
         if ($isEditing) {
+            $form->image('image', '封面图片')->rules('required|image');
             // 不允许用户修改『是否目录』和『父类目』字段的值
             // 用 display() 方法来展示值，with() 方法接受一个匿名函数，会把字段值传给匿名函数并把返回值展示出来
             $form->display('is_directory', '是否目录')->with(function ($value) {
@@ -113,7 +114,11 @@ class CategoriesController extends Controller
             });
             // 支持用符号 . 来展示关联关系的字段
             $form->display('parent.name', '父类目');
+             // 创建一个选择图片的框
+            
         } else {
+
+            $form->image('image', '封面图片')->rules('required|image');
             // 定义一个名为『是否目录』的单选框
            $form->radio('is_directory', '是否目录')
                 ->options(['1' => '是', '0' => '否'])
@@ -122,8 +127,9 @@ class CategoriesController extends Controller
 
             // 定义一个名为父类目的下拉框
             $form->select('parent_id', '父类目')->options('/admin/api/categories');
-        }
 
+        }
+        // dd($form);
         return $form;
     }
 

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use App\Models\Product;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,7 +19,7 @@ use Illuminate\Http\Request;
 Route::prefix('v1')->group(function() {
 	Route::get('/test', function () {
 
-    		return 'hello world';
+    		return Product::get()->toArray();
 	});
 });
 

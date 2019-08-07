@@ -16,7 +16,7 @@ use App\Models\Product;
 // Route::middleware('auth:api')->prefix('v1')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-Route::prefix('v1')->group(function() {
+Route::prefix('v1')->group(['namespace'=>'Api'],function() {
 	Route::get('/test', function () {
 
     		return Product::get()->toArray();

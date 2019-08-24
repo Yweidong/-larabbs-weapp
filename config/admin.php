@@ -410,6 +410,9 @@ return [
             // 'user_retriever' => function ($id) {
             //     return \App\User::find($id);
             // },
-        ]
+        ],
+        'grid-lightbox' => [
+            'enable' => true
+        ] 
     ],
 ];

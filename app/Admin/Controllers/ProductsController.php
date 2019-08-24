@@ -44,6 +44,7 @@ class ProductsController extends Controller
         $grid->model()->with(['category']);
         $grid->column('id', __('Id'))->sortable();
         $grid->title('商品名称');
+        $grid->column('image', __('图片'))->lightbox(['width' => 100, 'height' => 100]);
         //  . 来展示关联关系的字段
         $grid->column('category.name', '类目');
         $grid->on_sale('已上架')->display(function ($value) {

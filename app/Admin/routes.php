@@ -28,4 +28,11 @@ Route::group([
     //编辑商品
     $router->get('products/{id}/edit', 'ProductsController@edit');
     $router->put('products/{id}', 'ProductsController@update');
+    //轮播图管理
+    $router->get('banners', 'BannerController@index');
+    $router->get('banners/create', 'BannerController@create');
+    $router->post('banners','BannerController@store');
+    $router->get('banners/{id}/edit', 'BannerController@edit');
+    $router->put('banners/{id}', 'BannerController@update');
+    // $router->delete('banners/{id}', 'BannerController@destroy');
 });
